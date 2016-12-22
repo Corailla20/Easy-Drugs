@@ -1,7 +1,7 @@
 {
-  "name": "easy-drugs",
+  "name": "easy-drgus",
   "version": "1.1.1",
-  "description": "Easy-Drugs: An Ionic project",
+  "description": "Easy-Drgus: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",
