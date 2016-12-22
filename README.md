@@ -4,10 +4,15 @@ Easy-Drugs is a simple cordova application using Ionic.
 
 ## Install
 
+#### Install Ionic
+
+    npm install -g cordova ionic
+
+#### Download project
+
     git clone https://github.com/PierreCharles/Easy-Drugs.git
 
-
-## Launch
+## Run this app
 
 Go into Easy-Drugs project :
 
@@ -38,6 +43,6 @@ Go into Easy-Drugs project :
 
 
 ## Team members
-    - Coralie RODRIGUEZ
+    - Coralie RODRIGUES
     - Jéremy MEZHOUD
     - Pierre CHARLES
