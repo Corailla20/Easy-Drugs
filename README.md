@@ -41,7 +41,6 @@ Go into Easy-Drugs project :
     - **img** : Contains all images of the application.
     - index.html : entry point of the application.
 
-
 ## Team members
     - Coralie RODRIGUES
     - Jéremy MEZHOUD
