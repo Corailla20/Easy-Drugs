@@ -26,6 +26,23 @@ Go into Easy-Drugs project :
 
     ionic serve --lab
 
+#### Launch app on browser
+
+    cordova platform add browser
+
+    cordova run browser
+
+#### Launch app on Android device
+
+    cordova platform add android
+
+    ionic run android --device
+
+#### Launch app on IOS device
+
+    cordova platform add ios
+
+
 ## Ionic project
 
 - **www**
@@ -40,6 +57,9 @@ Go into Easy-Drugs project :
     - **lib** : Contains the libraries sources folders.
     - **img** : Contains all images of the application.
     - index.html : entry point of the application.
+- **platforms** contains all enerated build file for devices (Android, ios, browser, ...)
+
+
 
 ## Team members
     - Coralie RODRIGUES

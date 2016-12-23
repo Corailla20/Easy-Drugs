@@ -1,1 +1,6 @@
-/* Empty. Add your own CSS if you like */
+.homeButton{
+    width: 60%;
+    height: 200px;
+    margin: 50px auto;
+    background-color: #ef473a;
+}
