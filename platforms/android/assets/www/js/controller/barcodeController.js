@@ -18,5 +18,4 @@ angular.module('App')
                 console.log("An error happened -> " + error);
             });
         };
-
     });
