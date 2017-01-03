@@ -12,6 +12,9 @@
         },
         "cordova-sqlite-storage": {
             "PACKAGE_NAME": "com.ionicframework.easydrgus145784"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.ionicframework.easydrgus145784"
         }
     },
     "dependent_plugins": {

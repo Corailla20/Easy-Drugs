@@ -15,6 +15,38 @@ module.exports = [
         "clobbers": [
             "SQLitePlugin"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
+        "id": "cordova-plugin-camera.Camera",
+        "pluginId": "cordova-plugin-camera",
+        "clobbers": [
+            "Camera"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
+        "id": "cordova-plugin-camera.CameraPopoverOptions",
+        "pluginId": "cordova-plugin-camera",
+        "clobbers": [
+            "CameraPopoverOptions"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-camera/www/Camera.js",
+        "id": "cordova-plugin-camera.camera",
+        "pluginId": "cordova-plugin-camera",
+        "clobbers": [
+            "navigator.camera"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-camera/www/ios/CameraPopoverHandle.js",
+        "id": "cordova-plugin-camera.CameraPopoverHandle",
+        "pluginId": "cordova-plugin-camera",
+        "clobbers": [
+            "CameraPopoverHandle"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -22,7 +54,8 @@ module.exports.metadata =
 {
     "cordova-plugin-compat": "1.1.0",
     "phonegap-plugin-barcodescanner": "6.0.5",
-    "cordova-sqlite-storage": "1.5.1"
+    "cordova-sqlite-storage": "1.5.1",
+    "cordova-plugin-camera": "2.3.1"
 }
 // BOTTOM OF METADATA
 });

@@ -15,6 +15,14 @@
                         {
                             "xml": "<feature name=\"SQLitePlugin\"><param name=\"ios-package\" value=\"SQLitePlugin\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Camera\"><param name=\"ios-package\" value=\"CDVCamera\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"CameraUsesGeolocation\" value=\"false\" />",
+                            "count": 1
                         }
                     ]
                 }
@@ -24,6 +32,18 @@
                     "NSCameraUsageDescription": [
                         {
                             "xml": "<string> </string>",
+                            "count": 2
+                        }
+                    ],
+                    "NSPhotoLibraryUsageDescription": [
+                        {
+                            "xml": "<string> </string>",
+                            "count": 1
+                        }
+                    ],
+                    "NSLocationWhenInUseUsageDescription": [
+                        {
+                            "xml": "<string />",
                             "count": 1
                         }
                     ]
@@ -40,6 +60,11 @@
             "PACKAGE_NAME": "com.ionicframework.easydrgus145784"
         },
         "cordova-sqlite-storage": {
+            "PACKAGE_NAME": "com.ionicframework.easydrgus145784"
+        },
+        "cordova-plugin-camera": {
+            "CAMERA_USAGE_DESCRIPTION": " ",
+            "PHOTOLIBRARY_USAGE_DESCRIPTION": " ",
             "PACKAGE_NAME": "com.ionicframework.easydrgus145784"
         }
     },
@@ -60,11 +85,44 @@
             "clobbers": [
                 "SQLitePlugin"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
+            "id": "cordova-plugin-camera.Camera",
+            "pluginId": "cordova-plugin-camera",
+            "clobbers": [
+                "Camera"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
+            "id": "cordova-plugin-camera.CameraPopoverOptions",
+            "pluginId": "cordova-plugin-camera",
+            "clobbers": [
+                "CameraPopoverOptions"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-camera/www/Camera.js",
+            "id": "cordova-plugin-camera.camera",
+            "pluginId": "cordova-plugin-camera",
+            "clobbers": [
+                "navigator.camera"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-camera/www/ios/CameraPopoverHandle.js",
+            "id": "cordova-plugin-camera.CameraPopoverHandle",
+            "pluginId": "cordova-plugin-camera",
+            "clobbers": [
+                "CameraPopoverHandle"
+            ]
         }
     ],
     "plugin_metadata": {
         "cordova-plugin-compat": "1.1.0",
         "phonegap-plugin-barcodescanner": "6.0.5",
-        "cordova-sqlite-storage": "1.5.1"
+        "cordova-sqlite-storage": "1.5.1",
+        "cordova-plugin-camera": "2.3.1"
     }
 }
