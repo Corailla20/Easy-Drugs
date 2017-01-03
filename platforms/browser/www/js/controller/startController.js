@@ -7,6 +7,23 @@
 
 angular.module('App')
 
-    .controller('StartController', function($scope) {
+    .controller('StartController', function($scope, $state, $ionicHistory) {
 
+        $scope.clickBarcodeScanButton = function() {
+
+            $ionicHistory.nextViewOptions({
+                disableBack: true
+            });
+            $state.go('app.barcode');
+        };
+
+        $scope.clickTextboxScanButton = function() {
+
+            $ionicHistory.nextViewOptions({
+                disableBack: true
+            });
+            $state.go('app.textbox');
+        };
     });
+
+

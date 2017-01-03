@@ -61,6 +61,11 @@ Go into Easy-Drugs project :
 - **platforms** contains all enerated build file for devices (Android, ios, browser, ...)
 
 
+## Plugins
+
+- cordova-sqlite-storage : Native interface to sqlite in a Cordova/PhoneGap plugin for Android, iOS, Windows Universal (8.1), Amazon Fire-OS, and WP(7/8) with API similar to HTML5/Web SQL API.
+
+- phonegap-plugin-barcodescanner : The BarcodeScanner plugin supports extracting data from a large range of barcodes, including QR codes. On Android you can also encode any piece of text (URL, phone number, etc) into a QR code.
 
 ## Team members
     - Coralie RODRIGUES
