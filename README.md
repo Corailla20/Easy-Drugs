@@ -4,6 +4,12 @@ Easy-Drugs is a simple cordova application using Ionic.
 
 ## Install
 
+#### Install NodeJs & npm
+
+    curl -sL https://deb.nodesource.com/setup_7.x | sudo bash -
+
+    sudo apt-get install nodejs
+
 #### Install Ionic
 
     npm install -g cordova ionic
@@ -26,12 +32,6 @@ Go into Easy-Drugs project :
 
     ionic serve --lab
 
-#### Launch app on browser
-
-    cordova platform add browser
-
-    cordova run browser
-
 #### Launch app on Android device
 
     cordova platform add android
@@ -41,6 +41,7 @@ Go into Easy-Drugs project :
 #### Launch app on IOS device
 
     cordova platform add ios
+
 
 
 ## Ionic project
