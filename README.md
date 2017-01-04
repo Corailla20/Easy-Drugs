@@ -1,6 +1,6 @@
 # Easy-Drugs
 
-Easy-Drugs is a simple cordova application using Ionic.
+Easy-Drugs is a simple Cordova application using Ionic.
 
 ## Install
 
@@ -43,7 +43,6 @@ Go into Easy-Drugs project :
     cordova platform add ios
 
 
-
 ## Ionic project
 
 - **www**
@@ -58,16 +57,16 @@ Go into Easy-Drugs project :
     - **lib** : Contains the libraries sources folders.
     - **img** : Contains all images of the application.
     - index.html : entry point of the application.
-- **platforms** contains all enerated build file for devices (Android, ios, browser, ...)
+- **platforms** contains all generated build file for devices (Android, ios, browser, ...)
 
 
 ## Plugins
 
-- cordova-sqlite-storage : Native interface to sqlite in a Cordova/PhoneGap plugin for Android, iOS, Windows Universal (8.1), Amazon Fire-OS, and WP(7/8) with API similar to HTML5/Web SQL API.
+- **cordova-sqlite-storage** : Native interface to sqlite in a Cordova/PhoneGap plugin for Android, iOS, Windows Universal (8.1), Amazon Fire-OS, and WP(7/8) with API similar to HTML5/Web SQL API.
 
-- phonegap-plugin-barcodescanner : The BarcodeScanner plugin supports extracting data from a large range of barcodes, including QR codes. On Android you can also encode any piece of text (URL, phone number, etc) into a QR code.
+- **phonegap-plugin-barcodescanner** : The BarcodeScanner plugin supports extracting data from a large range of barcodes, including QR codes. On Android you can also encode any piece of text (URL, phone number, etc) into a QR code.
 
 ## Team members
-    - Coralie RODRIGUES
-    - Jéremy MEZHOUD
-    - Pierre CHARLES
+    - Coralie **RODRIGUES**
+    - Jéremy **MEZHOUD**
+    - Pierre **CHARLES**
