@@ -9,7 +9,7 @@ angular.module('App')
 
     .controller('TextboxController', function($scope, $cordovaCamera) {
 
-
+        //Camera options
         var options = {
             quality: 75,
             destinationType: Camera.DestinationType.DATA_URL,
@@ -20,11 +20,12 @@ angular.module('App')
             popoverOptions: CameraPopoverOptions,
             saveToPhotoAlbum: false
         };
-
+        
         $scope.takePhoto = function () {
 
             options.sourceType = Camera.PictureSourceType.CAMERA;
 
+            //Fonction that let the user take a picture and then give it to the TesseractPlugin 
             $cordovaCamera.getPicture(options).then(function (imageData) {
                 $scope.image = "data:image/jpeg;base64," + imageData;
                 $scope.text = null;
@@ -55,7 +56,7 @@ angular.module('App')
 
             options.sourceType = Camera.PictureSourceType.PHOTOLIBRARY;
 
-
+            //Fonction that let the user pick a picture and then give it to the TesseractPlugin
             $cordovaCamera.getPicture(options).then(function (imageData) {
                 $scope.image = "data:image/jpeg;base64," + imageData;
                 $scope.text = null;
