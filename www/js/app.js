@@ -3,7 +3,7 @@
    This is the start point of the application.
    Here defined configs of application
  */
-angular.module('App', ['ionic', 'app.routes', 'ngCordova'])
+angular.module('App', ['ionic', 'app.routes', 'ngCordova', 'starter.services'])
 
     // NOT USED NOW -> FOR DATABASE CONNECTION
     // .constant('FURL', 'https://ionicappblahblahcar.firebaseio.com/')

@@ -15,6 +15,7 @@ angular.module('App')
                 disableBack: true
             });
             $state.go('app.barcode');
+
         };
 
         $scope.clickTextboxScanButton = function() {
