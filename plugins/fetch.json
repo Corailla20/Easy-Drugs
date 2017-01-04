@@ -25,10 +25,26 @@
         "is_top_level": true,
         "variables": {}
     },
+    "cordova-plugin-tesseract": {
+        "source": {
+            "type": "local",
+            "path": "cordova-plugin-tesseract"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
     "cordova-plugin-camera": {
         "source": {
             "type": "registry",
             "id": "cordova-plugin-camera"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-media-capture": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-media-capture"
         },
         "is_top_level": true,
         "variables": {}
