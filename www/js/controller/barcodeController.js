@@ -20,7 +20,7 @@ angular.module('App')
 
                 var find = false;
                 angular.forEach($scope.drugs, function(value, key){
-                    if(imageData.text == value.bar_code || imageData.text == value.flash_code) {
+                    if(imageData.text == value.bar_code) {
                         find = true;
                         $scope.drug = value;
                         //alert(value.title);

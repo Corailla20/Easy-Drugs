@@ -30,6 +30,7 @@ angular.module('App')
             });
         };
 
+        //Fonction that let the user pick a picture and then give it to the TesseractPlugin
         $scope.choosePhoto = function () {
             var options = {
                 quality: 75,
