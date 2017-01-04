@@ -1,6 +1,15 @@
-.homeButton{
-    width: 60%;
+#default_button{
+    font-size:50px;
+    color: darkcyan;
+    width:70%;
     height: 200px;
     margin: 50px auto;
-    background-color: #ef473a;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid darkcyan;
+}
+
+.button_default_style{
+    color:white;
+    background-color:darkcyan;
 }

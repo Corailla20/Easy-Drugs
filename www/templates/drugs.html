@@ -1,4 +1,15 @@
-<ion-view view-title="Easy-Drugs - Drugs List">
+<ion-view view-title="Easy-Drugs - Drugs List" ng-controller="DrugsController">
+
+  <ion-header-bar class="bar-subheader item-input-inset">
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios7-search placeholder-icon"></i>
+      <input type="search" placeholder="Quick search" ng-change="search()" ng-model="searchData">
+    </label>
+    <button class="button button-clear" style="color: black;">
+      <i class="ion-close"></i>
+    </button>
+  </ion-header-bar>
+
   <ion-content>
     <ion-list>
 

@@ -8,5 +8,10 @@
 angular.module('App')
 
     .controller('DrugsController', function($scope, myService) {
-            $scope.drugs = myService.drugs; 
+            $scope.drugs = myService.drugs;
+
+        $scope.search = function() {
+
+        }
+
     });

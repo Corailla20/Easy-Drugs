@@ -1,15 +1,14 @@
 <ion-view view-title="Easy-Drugs - Home">
     <ion-content>
 
-        <button style="font-size:50px; color: white; width:60%; height: 200px; margin: 50px auto; background-color: slategrey;"
-                ng-click="clickBarcodeScanButton()" class="button button-full">
-            Scan a bar code
+        <button ng-click="clickBarcodeScanButton()" id="default_button" class="button button-full">
+            <p>Barcode</p>
+            <i class="ion-ios-barcode-outline"></i>
         </button>
 
-        <button style="font-size:50px; color: white; width:60%; height: 200px; margin: 50px auto; background-color: red;"
-
-                ng-click="clickTextboxScanButton()" class="button button-full">
-            Scan a drug box
+        <button ng-click="clickTextboxScanButton()" id="default_button" class="button button-full">
+            <p>Drug box</p>
+            <i class="ion-qr-scanner"></i>
         </button>
 
     </ion-content>

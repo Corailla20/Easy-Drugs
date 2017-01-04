@@ -1,14 +1,10 @@
 <ion-view view-title="Easy-Drugs - BarCodeScan">
   <ion-content ng-controller="BarcodeController">
-    <h1>BarCode Scan</h1>
-
-      <p>
+      <p style="padding:20px;font-size:18px; text-align:justify; margin-top:20px;">
           Scan barcodes or Qr codes on drug boxes. If you are using a browser, please enter the barcode numbers manually.
-
       </p>
 
-      <button style="font-size:50px; color: white; width:60%; height: 200px; margin: 50px auto; background-color: slategrey;"
-              ng-click="scanBarcode()" class="button button-full">
+      <button ng-click="scanBarcode()" id="default_button" class="button button-full">
           Scan
       </button>
 
