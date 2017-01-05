@@ -1,25 +1,30 @@
 <ion-view view-title="Easy-Drugs - Drugs List" ng-controller="DrugsController">
 
-  <ion-header-bar class="bar-subheader item-input-inset">
-    <label class="item-input-wrapper">
-      <i class="icon ion-ios7-search placeholder-icon"></i>
-      <input type="search" placeholder="Quick search" ng-change="search()" ng-model="searchData">
-    </label>
-    <button class="button button-clear" style="color: black;">
-      <i class="ion-close"></i>
-    </button>
-  </ion-header-bar>
+    <ion-header-bar class="bar-subheader item-input-inset">
 
-  <ion-content>
-    <ion-list>
+        <label class="item-input-wrapper">
+          <i class="icon ion-ios7-search placeholder-icon"></i>
+          <input type="search" placeholder="Quick search" ng-change="search()" ng-model="searchData">
+        </label>
 
-      <ion-item ng-repeat="drug in drugs" href="#/app/drugs/{{drug.id}}">
-        <div>
-          <h2>{{drug.title}}</h2>
-          <p>{{drug.sub_name}}</p>
-        </div>
-      </ion-item>
+        <button class="button button-clear" ng-click="cancel()" style="color: black;">
+          <i class="ion-close"></i>
+        </button>
 
-    </ion-list>
-  </ion-content>
+    </ion-header-bar>
+
+    <ion-content>
+
+        <ion-list>
+            <ion-item ng-repeat="drug in drugs" href="#/app/drugs/{{drug.id}}">
+                <div>
+                    <h2>{{drug.title}}</h2>
+                    <p>{{drug.sub_name}}</p>
+                </div>
+            </ion-item>
+
+        </ion-list>
+
+    </ion-content>
+
 </ion-view>

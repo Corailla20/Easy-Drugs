@@ -8,10 +8,16 @@
 angular.module('App')
 
     .controller('DrugsController', function($scope, myService) {
-            $scope.drugs = myService.drugs;
+
+        $scope.drugs = myService.drugs;
+        $scope.searchData = '';
 
         $scope.search = function() {
 
+        };
+
+        $scope.cancel = function(){
+            $scope.searchData = '';
         }
 
     });
