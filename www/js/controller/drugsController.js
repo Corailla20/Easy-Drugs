@@ -12,6 +12,7 @@ angular.module('App')
         $scope.drugs = myService.drugs;
         $scope.drugsDB = myService.drugs;
         $scope.searchData = '';
+        myService.expDate = '';
 
         $scope.search = function() {
             $scope.drugsDB = myService.drugs;
