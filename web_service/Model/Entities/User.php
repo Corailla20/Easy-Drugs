@@ -1,5 +1,7 @@
 <?php
 
+namespace Model\Entities;
+
 class user {
 
     private $id_user;

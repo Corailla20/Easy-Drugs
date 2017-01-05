@@ -57,12 +57,16 @@ Go into Easy-Drugs project :
     - **lib** : Contains the libraries sources folders.
     - **img** : Contains all images of the application.
     - index.html : entry point of the application.
-- **platforms** contains all generated build file for devices (Android, ios, browser, ...)
+- **plugins** contains all app plugins
+- **web_service** contains all php files to copy an web server to make a web service
 
+
+## Server and Database
+
+    This app need to a web service and a online database to run. Copy all php script of web_service folder into webs server.
+    Then, import database.sql into this database server.
 
 ## Plugins
-
-- **cordova-sqlite-storage** : Native interface to sqlite in a Cordova/PhoneGap plugin for Android, iOS, Windows Universal (8.1), Amazon Fire-OS, and WP(7/8) with API similar to HTML5/Web SQL API.
 
 - **phonegap-plugin-barcodescanner** : The BarcodeScanner plugin supports extracting data from a large range of barcodes, including QR codes. On Android you can also encode any piece of text (URL, phone number, etc) into a QR code.
 

@@ -4,9 +4,9 @@ namespace Model;
 
 use PDO;
 
-/*
- * Classe de connection et d'intéraction avec la base de données -> Singleton
-     * Variables globales -> fichier config.php
+/**
+ * Database connexion class. It's a singleton to make an unique connexion
+     * Globals variables -> file : config/config.php
      * $host        = L'hôte (ordinateur sur lequel Mysql est installé)
      * $base        = Le nom de la base de données
      * $login       = Le nom d'utilisateur

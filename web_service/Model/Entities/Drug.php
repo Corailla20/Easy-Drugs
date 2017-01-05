@@ -28,7 +28,7 @@ class Drug {
             'bar_code' => $this->bar_code,
             'flash_code' => $this->flash_code,
             'notice' => $this->notice
-        ];;
+        ];
     }
 
     public function getIdDrug() {
