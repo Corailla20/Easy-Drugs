@@ -25,7 +25,7 @@ angular.module('App')
                             disableBack: false
                         });
                         $state.go('app.drug', { 'drugId': value.id });
-                        if(imageData.text != value.bar_code) {  // -> This is a flash code
+                        if(imageData.text != value.bar_code) {  // --> This is a flash code
                             // Get experitation date from flash code
                             var expDateTmp = imageData.text.substring(19,25);
                             myService.expDate = "Date d'expiration : " + /*expDateTmp.substring(4,6) + "/" +*/ expDateTmp.substring(2,4) + "/" + expDateTmp.substring(0,2);
