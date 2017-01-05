@@ -9,10 +9,12 @@ angular.module('App')
 
     .controller('StartController', function($scope, $state, $ionicHistory) {
 
+        //myService.expDate = '';
+
         $scope.clickBarcodeScanButton = function() {
 
             $ionicHistory.nextViewOptions({
-                disableBack: true
+                disableBack: false
             });
             $state.go('app.barcode');
 
@@ -21,7 +23,7 @@ angular.module('App')
         $scope.clickTextboxScanButton = function() {
 
             $ionicHistory.nextViewOptions({
-                disableBack: true
+                disableBack: false
             });
             $state.go('app.textbox');
         };
