@@ -1,6 +1,6 @@
 <?php
 
-    require_once(__DIR__ . 'config.php');
+    require_once(__DIR__ . '../Config/config.php');
     require_once(__DIR__ . '../Model/Entities/Drug.php');
     require_once(__DIR__ . '../Model/Entities/Drugs.php');
     require_once(__DIR__ . '../Model/Entities/User.php');

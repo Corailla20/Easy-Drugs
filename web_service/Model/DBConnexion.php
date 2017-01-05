@@ -1,5 +1,9 @@
 <?php
 
+namespace Model;
+
+use PDO;
+
 /*
  * Classe de connection et d'intéraction avec la base de données -> Singleton
      * Variables globales -> fichier config.php

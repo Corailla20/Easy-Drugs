@@ -1,5 +1,7 @@
 <?php
 
+namespace Model\Entities;
+
 class Drug {
 
     private $id_drug;
@@ -16,6 +18,17 @@ class Drug {
         $this->setBarCode($bar_code);
         $this->setFlashCode($flash_code);
         $this->setNotice($notice);
+    }
+
+    public function toJson(){
+        return [
+            'id_drug' => $this->id_drug,
+            'name' => $this->name,
+            'sub_name' => $this->sub_name,
+            'bar_code' => $this->bar_code,
+            'flash_code' => $this->flash_code,
+            'notice' => $this->notice
+        ];;
     }
 
     public function getIdDrug() {

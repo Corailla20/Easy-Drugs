@@ -1,17 +1,19 @@
 <?php
 
+namespace Model\Entities;
+
  class Drugs{
 
     private $drugs;
 
     public function __construct()
     {
-        $this->drugs=array();
+        $this->drugs = array();
     }
 
     public function addDrug($drug)
     {
-        array_push($drugs, $drug);
+        array_push($this->drugs, $drug);
     }
 
     public function getDrugsToJson()
