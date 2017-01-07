@@ -9,7 +9,7 @@ angular.module('App')
 
     .controller('StartController', function($scope, $state, $ionicHistory) {
 
-        //myService.expDate = '';
+        //Drugs.expDate = '';
 
         $scope.clickBarcodeScanButton = function() {
 

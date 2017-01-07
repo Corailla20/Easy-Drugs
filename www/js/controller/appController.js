@@ -8,7 +8,7 @@
 angular.module('App')
 
     .controller('AppController', function($scope, $ionicModal, $timeout) {
-
+        
         // Form data for the login modal
         $scope.loginData = {};
 

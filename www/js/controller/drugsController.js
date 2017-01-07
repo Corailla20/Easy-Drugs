@@ -7,15 +7,15 @@
 
 angular.module('App')
 
-    .controller('DrugsController', function($scope, $state, myService) {
+    .controller('DrugsController', function($scope, $state, Drugs) {
 
-        $scope.drugs = myService.drugs;
-        $scope.drugsDB = myService.drugs;
+        $scope.drugs = Drugs.drugs;
+        $scope.drugsDB = Drugs.drugs;
         $scope.searchData = '';
-        myService.expDate = '';
+        Drugs.expDate = '';
 
         $scope.search = function() {
-            $scope.drugsDB = myService.drugs;
+            $scope.drugsDB = Drugs.drugs;
             $scope.drugs = [];
             angular.forEach($scope.drugsDB, function(value, key){
                 if(value.title.indexOf($scope.searchData) == 0){
@@ -26,7 +26,7 @@ angular.module('App')
 
         $scope.cancel = function(){
             $scope.searchData = '';
-            $scope.drugs = myService.drugs;
+            $scope.drugs = Drugs.drugs;
         }
 
     });

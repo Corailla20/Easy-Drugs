@@ -7,7 +7,7 @@
      */
 
     $cacheFile = __DIR__ .DIRECTORY_SEPARATOR."cache.php";
-    $Directories = [ 'Model' => '../'];
+    $Directories = [ 'Model' => '../', 'Controller' => '../'];
 
     if (file_exists($cacheFile)) {
         $cache = require $cacheFile;

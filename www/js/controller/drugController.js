@@ -6,10 +6,10 @@
 'Use Strict';
 
 angular.module('App')
-    .controller('DrugController', function($scope, $stateParams, myService) {		
+    .controller('DrugController', function($scope, $stateParams, Drugs) {
 		
-		$scope.drugs = myService.drugs;
-		$scope.expDate = myService.expDate;
+		$scope.drugs = Drugs.drugs;
+		$scope.expDate = Drugs.expDate;
 
 		$scope.getDrug = function() {
 			angular.forEach($scope.drugs, function(value, key){
