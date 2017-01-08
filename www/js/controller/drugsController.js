@@ -7,26 +7,61 @@
 
 angular.module('App')
 
-    .controller('DrugsController', function($scope, $state, Drugs) {
+    .controller('DrugsController', function($scope, $state, Drugs, DrugsService, $ionicLoading) {
 
-        $scope.drugs = Drugs.drugs;
-        $scope.drugsDB = Drugs.drugs;
+        var self = this;
+
+        this.showLoading = function() {
+            $ionicLoading.show({
+                template: '<ion-spinner></ion-spinner>'
+            });
+        };
+
+        this.hideLoading = function(){
+            $ionicLoading.hide();
+        };
+
+        self.showLoading();
+        var myDrugsDataPromise = Drugs.getData();
+        myDrugsDataPromise.then(function(result) {
+            // this is only run after getData() resolves
+            $scope.drugs = result;
+            $scope.drugsDB = result;
+            self.hideLoading();
+        });
+
+
         $scope.searchData = '';
-        Drugs.expDate = '';
+        DrugsService.expDate = '';
 
         $scope.search = function() {
-            $scope.drugsDB = Drugs.drugs;
-            $scope.drugs = [];
-            angular.forEach($scope.drugsDB, function(value, key){
-                if(value.title.indexOf($scope.searchData) == 0){
-                    $scope.drugs.push(value);                    
-                }
+
+            var myDrugsDataPromise = Drugs.getData();
+            myDrugsDataPromise.then(function(result) {
+                self.showLoading();
+                // this is only run after getData() resolves
+                $scope.drugs = [];
+                $scope.drugsDB = result;
+
+                angular.forEach($scope.drugsDB, function(value, key){
+
+                    if(value.title.indexOf($scope.searchData) == 0){
+                        $scope.drugs.push(value);
+                    }
+                });
+                self.hideLoading();
             });
-        }
+        };
 
         $scope.cancel = function(){
+            self.showLoading();
+            var myDrugsDataPromise = Drugs.getData();
+            myDrugsDataPromise.then(function(result) {
+                // this is only run after getData() resolves
+                $scope.drugs = result;
+                self.hideLoading();
+            });
             $scope.searchData = '';
-            $scope.drugs = Drugs.drugs;
         }
 
     });

@@ -7,7 +7,19 @@
 
 angular.module('App')
 
-    .controller('TextboxController', function($scope, $cordovaCamera) {
+    .controller('TextboxController', function($scope, $cordovaCamera, $ionicLoading) {
+
+        var self = this;
+
+        this.showLoading = function() {
+            $ionicLoading.show({
+                template: '<ion-spinner></ion-spinner>'
+            });
+        };
+
+        this.hideLoading = function(){
+            $ionicLoading.hide();
+        };
 
         $scope.takePhoto = function () {
 
@@ -27,14 +39,26 @@ angular.module('App')
 
                     var imgURI = "data:image/jpeg;base64," + imageData;
 
+                    /*
+                    // TESSERACT
+                     self.showLoading();
                     Tesseract.recognize(imgURI)
                         .progress(function (p) {
                         })
                         .then(function (result) {
-                            alert(JSON.stringify(result));
-                            alert(result.text);
-                            alert(JSON.stringify(result.text));
-                        })
+                            self.hideLoading();
+                            alert(result);
+                        });
+                    
+
+                    // OCRAD
+
+                    self.showLoading();
+                    OCRAD(imgURI, function(text){
+                        self.hideLoading();
+                        alert(text);
+                    });
+                     */
 
                 }, function (err) {
                     alert("An error occured. Show a message to the user"+err);

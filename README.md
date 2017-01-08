@@ -22,6 +22,11 @@ Easy-Drugs is a simple Cordova application using Ionic.
 
 ## Development configuration
 
+
+#### CORS
+
+Use Chrome plug-in 'Allow-Control-Allow-Origin' to disable : Access-Control-Allow-Origin --> CORS when try to get or post somethings.
+
 #### NodeJs & npm
 
     curl -sL https://deb.nodesource.com/setup_7.x | sudo bash -

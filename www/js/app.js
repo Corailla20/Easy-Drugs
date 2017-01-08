@@ -4,7 +4,7 @@
    Here defined configs of application
  */
 
-angular.module('App', ['ionic', 'app.routes', 'ngCordova', 'factories'])
+angular.module('App', ['ionic', 'app.routes', 'ngCordova', 'factories', 'services'])
 
     // Define a constant URL for web service
     .constant('SERVICE_URL', 'https://easy-drugs.000webhostapp.com/web_service')
