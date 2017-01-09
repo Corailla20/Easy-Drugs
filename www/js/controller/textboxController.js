@@ -51,7 +51,7 @@ angular.module('App')
                             self.hideLoading();
                             alert(result.text);
                         });
-                        
+
                 }, function (err) {
 
                     if(err = "Camera cancelled."){
@@ -84,7 +84,18 @@ angular.module('App')
                 options.sourceType = Camera.PictureSourceType.PHOTOLIBRARY;
 
                 $cordovaCamera.getPicture(options).then(function (imageData) {
-                    $scope.imgURI = "data:image/jpeg;base64," + imageData;
+
+                    var imgURI = "data:image/jpeg;base64," + imageData;
+
+                    self.showLoading('');
+                    Tesseract.recognize(imgURI)
+                        .progress(function (progress) {
+                            self.showLoading(progress.status);
+                        })
+                        .then(function (result) {
+                            self.hideLoading();
+                            alert(result.text);
+                        });
 
                 }, function (err) {
 
