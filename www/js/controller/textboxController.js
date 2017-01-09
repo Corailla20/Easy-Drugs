@@ -11,9 +11,9 @@ angular.module('App')
 
         var self = this;
 
-        this.showLoading = function() {
+        this.showLoading = function(message) {
             $ionicLoading.show({
-                template: '<ion-spinner></ion-spinner>'
+                template: '<ion-spinner></ion-spinner><p>'+message+'</p>'
             });
         };
 
@@ -39,32 +39,32 @@ angular.module('App')
 
                     var imgURI = "data:image/jpeg;base64," + imageData;
 
-                    /*
-                    // TESSERACT
-                     self.showLoading();
-                    Tesseract.recognize(imgURI)
-                        .progress(function (p) {
+                    self.showLoading('');
+                    Tesseract.recognize('http://tesseract.projectnaptha.com/img/eng_bw.png')
+                        .progress(function (progress) {
+                            self.showLoading(progress.status);
                         })
                         .then(function (result) {
                             self.hideLoading();
-                            alert(result);
+                            console.log(result.text);
                         });
-                    
-
-                    // OCRAD
-
-                    self.showLoading();
-                    OCRAD(imgURI, function(text){
-                        self.hideLoading();
-                        alert(text);
-                    });
-                     */
-
                 }, function (err) {
                     alert("An error occured. Show a message to the user"+err);
                 });
-            } else {
-                alert("Sorry, this function is not available on browser.");
+
+            } else { // Navigator treatment
+
+                // TESSERACT
+                self.showLoading('');
+                Tesseract.recognize('http://www.cekane.fr/wp-content/uploads/2015/10/googlelogosept12015.png')
+                    .progress(function (progress) {
+                        self.showLoading(progress.status);
+                    })
+                    .then(function (result) {
+                        self.hideLoading();
+                        alert(result.text);
+                        console.log(result.text);
+                    });
             }
 
         };
@@ -86,7 +86,6 @@ angular.module('App')
 
                 $cordovaCamera.getPicture(options).then(function (imageData) {
                     $scope.imgURI = "data:image/jpeg;base64," + imageData;
-    
 
                 }, function (err) {
                     alert("An error occured. Show a message to the user" + err);

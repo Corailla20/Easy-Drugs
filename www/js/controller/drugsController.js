@@ -11,9 +11,9 @@ angular.module('App')
 
         var self = this;
 
-        this.showLoading = function() {
+        this.showLoading = function(message) {
             $ionicLoading.show({
-                template: '<ion-spinner></ion-spinner>'
+                template: '<ion-spinner>'+message+'</ion-spinner>'
             });
         };
 
@@ -21,7 +21,8 @@ angular.module('App')
             $ionicLoading.hide();
         };
 
-        self.showLoading();
+
+        self.showLoading('');
         var myDrugsDataPromise = Drugs.getData();
         myDrugsDataPromise.then(function(result) {
             // this is only run after getData() resolves
@@ -29,7 +30,6 @@ angular.module('App')
             $scope.drugsDB = result;
             self.hideLoading();
         });
-
 
         $scope.searchData = '';
         DrugsService.expDate = '';
