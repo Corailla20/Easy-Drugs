@@ -11,6 +11,18 @@ angular.module('App')
 
         var self = this;
 
+        var options = {
+            quality: 75,
+            destinationType: Camera.DestinationType.DATA_URL,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 300,
+            targetHeight: 300,
+            popoverOptions: CameraPopoverOptions,
+            saveToPhotoAlbum: false
+        };
+
+
         this.showLoading = function(message) {
             $ionicLoading.show({
                 template: '<ion-spinner></ion-spinner><p>'+message+'</p>'
@@ -23,33 +35,29 @@ angular.module('App')
 
         $scope.takePhoto = function () {
 
+            options.sourceType = Camera.PictureSourceType.CAMERA;
+
             if(ionic.Platform.platforms[0] != "browser"){
-                var options = {
-                    quality: 75,
-                    destinationType: Camera.DestinationType.DATA_URL,
-                    sourceType: Camera.PictureSourceType.CAMERA,
-                    allowEdit: true,
-                    encodingType: Camera.EncodingType.JPEG,
-                    targetWidth: 300,
-                    targetHeight: 300,
-                    popoverOptions: CameraPopoverOptions,
-                    saveToPhotoAlbum: false
-                };
                 $cordovaCamera.getPicture(options).then(function (imageData) {
 
                     var imgURI = "data:image/jpeg;base64," + imageData;
 
                     self.showLoading('');
-                    Tesseract.recognize('http://tesseract.projectnaptha.com/img/eng_bw.png')
+                    Tesseract.recognize(imgURI)
                         .progress(function (progress) {
                             self.showLoading(progress.status);
                         })
                         .then(function (result) {
                             self.hideLoading();
-                            console.log(result.text);
+                            alert(result.text);
                         });
+                        
                 }, function (err) {
-                    alert("An error occured. Show a message to the user"+err);
+
+                    if(err = "Camera cancelled."){
+
+                    }else alert("An error occured. Show a message to the user" + err);
+
                 });
 
             } else { // Navigator treatment
@@ -72,23 +80,18 @@ angular.module('App')
         //Fonction that let the user pick a picture and then give it to the TesseractPlugin
         $scope.choosePhoto = function () {
             if(ionic.Platform.platforms[0] != "browser") {
-                var options = {
-                    quality: 75,
-                    destinationType: Camera.DestinationType.DATA_URL,
-                    sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-                    allowEdit: true,
-                    encodingType: Camera.EncodingType.JPEG,
-                    targetWidth: 300,
-                    targetHeight: 300,
-                    popoverOptions: CameraPopoverOptions,
-                    saveToPhotoAlbum: false
-                };
+
+                options.sourceType = Camera.PictureSourceType.PHOTOLIBRARY;
 
                 $cordovaCamera.getPicture(options).then(function (imageData) {
                     $scope.imgURI = "data:image/jpeg;base64," + imageData;
 
                 }, function (err) {
-                    alert("An error occured. Show a message to the user" + err);
+
+                    if(err = "Selection cancelled."){
+
+                    }else alert("An error occured. Show a message to the user" + err);
+
                 });
             } else {
                 alert("Sorry, this function is not available on browser.");
