@@ -7,7 +7,7 @@
 
 angular.module('App')
 
-    .controller('DrugsController', function($scope, $state, Drugs, DrugsService, $ionicLoading) {
+    .controller('DrugsController', function($scope, $state, Drugs, DrugsService, $ionicLoading, LoadingService) {
 
         var self = this;
 
@@ -38,7 +38,7 @@ angular.module('App')
 
             var myDrugsDataPromise = Drugs.getData();
             myDrugsDataPromise.then(function(result) {
-                self.showLoading();
+                self.showLoading('');
                 // this is only run after getData() resolves
                 $scope.drugs = [];
                 $scope.drugsDB = result;
@@ -54,7 +54,7 @@ angular.module('App')
         };
 
         $scope.cancel = function(){
-            self.showLoading();
+            self.showLoading('');
             var myDrugsDataPromise = Drugs.getData();
             myDrugsDataPromise.then(function(result) {
                 // this is only run after getData() resolves

@@ -56,7 +56,7 @@ angular.module('App')
 
                 // TESSERACT
                 self.showLoading('');
-                Tesseract.recognize('http://www.cekane.fr/wp-content/uploads/2015/10/googlelogosept12015.png')
+                Tesseract.recognize('http://ngcordova.com/img/ngcordova-logo.png')
                     .progress(function (progress) {
                         self.showLoading(progress.status);
                     })

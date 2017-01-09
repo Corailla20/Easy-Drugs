@@ -11,9 +11,9 @@ angular.module('App')
 
         var self = this;
 
-        this.showLoading = function() {
+        this.showLoading = function(message) {
             $ionicLoading.show({
-                template: '<ion-spinner></ion-spinner>'
+                template: '<ion-spinner>'+message+'</ion-spinner>'
             });
         };
 
