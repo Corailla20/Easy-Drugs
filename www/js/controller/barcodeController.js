@@ -11,9 +11,9 @@ angular.module('App')
 
         var self = this;
 
-        this.showLoading = function() {
+        this.showLoading = function(message) {
             $ionicLoading.show({
-                template: '<ion-spinner></ion-spinner>'
+                template: '<ion-spinner>'+message+'</ion-spinner>'
             });
         };
 
@@ -46,9 +46,9 @@ angular.module('App')
                                 });
                                 $state.go('app.drug', { 'drugId': value.id });
                                 if(imageData.text != value.bar_code) {  // --> This is a flash code
-                                    // Get experitation date from flash code
+                                    // Get expiration date from flash code
                                     var expDateTmp = imageData.text.substring(19,25);
-                                    DrugsService.expDate = "Expiprated date : " + /*expDateTmp.substring(4,6) + "/" +*/ expDateTmp.substring(2,4) + "/" + expDateTmp.substring(0,2);
+                                    DrugsService.expDate = "Expiration date : " + /*expDateTmp.substring(4,6) + "/" +*/ expDateTmp.substring(2,4) + "/" + expDateTmp.substring(0,2);
                                     //alert(Drugs.expDate);
                                 }
                                 else {

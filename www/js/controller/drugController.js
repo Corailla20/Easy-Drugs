@@ -8,34 +8,15 @@
 angular.module('App')
     .controller('DrugController', function($scope, $stateParams, Drugs, $ionicLoading, DrugsService) {
 
-		var self = this;
+		$scope.drugs = DrugsService.drugs;
+		$scope.expDate = DrugsService.expDate;
 
-		this.showLoading = function() {
-			$ionicLoading.show({
-				template: '<ion-spinner></ion-spinner>'
+		$scope.getDrug = function() {
+			angular.forEach($scope.drugs, function(value, key){
+				if($stateParams.drugId == value.id) {
+					$scope.drug = value;
+				}
 			});
 		};
-
-		this.hideLoading = function(){
-			$ionicLoading.hide();
-		};
-
-		self.showLoading();
-		var myDrugsDataPromise = Drugs.getData();
-		myDrugsDataPromise.then(function(result) {
-			// this is only run after getData() resolves
-			$scope.drugs = result;
-			$scope.expDate = DrugsService.expDate;
-
-			$scope.getDrug = function() {
-				angular.forEach($scope.drugs, function(value, key){
-					if($stateParams.drugId == value.id) {
-						$scope.drug = value;
-					}
-				});
-			};
-			$scope.getDrug();
-			self.hideLoading();
-		});
-
+		$scope.getDrug();
     });
