@@ -31,5 +31,3 @@ angular.module('factories', [])
  { id:'med0010', title: 'Exomuc', sub_name: 'Exomuc Sans sucre - Gout orange - 24 sachets',  bar_code: 0 , flash_code : '010340093638513917' } //'010340094153396917190800100553' }
  ];
  */
-
-// Flash Code : 01 puis GTIN (14 chiffres - code universel), 17 puis date d'expiration (6 chiffres - YYMMDD), 10 puis batch/lot  
