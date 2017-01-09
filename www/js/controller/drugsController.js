@@ -36,8 +36,6 @@ angular.module('App')
             self.hideLoading();
         });
 
-        console.log(DrugsService.drugs);
-
         $scope.search = function() {
             $scope.drugs = [];
             $scope.drugsDB = DrugsService.drugs;
