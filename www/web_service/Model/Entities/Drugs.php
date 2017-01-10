@@ -2,6 +2,11 @@
 
 namespace Model\Entities;
 
+/**
+ * Class Drugs
+ * @package Model\Entities
+ * Author : Pierre CHARLES
+ */
  class Drugs{
 
     private $drugs;

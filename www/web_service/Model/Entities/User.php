@@ -2,6 +2,11 @@
 
 namespace Model\Entities;
 
+/**
+ * Class user
+ * @package Model\Entities
+ * Author : Pierre CHARLES
+ */
 class user {
 
     private $id_user;

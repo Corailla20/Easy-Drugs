@@ -1,10 +1,9 @@
 <?php
 
-    /**
-     * Author : Pierre CHARLES
-     * Php auto loader used for load all service class.
-     * Check to add all directories into the variable
-     */
+/**
+ * Author : Pierre CHARLES
+ * Auto loader function
+ */
 
     $cacheFile = __DIR__ .DIRECTORY_SEPARATOR."cache.php";
     $Directories = [ 'Model' => '../', 'Controller' => '../'];

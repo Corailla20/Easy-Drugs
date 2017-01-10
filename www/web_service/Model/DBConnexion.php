@@ -5,30 +5,42 @@ namespace Model;
 use PDO;
 
 /**
+ * Class DBConnexion
+ * @package Model
  * Author : Pierre CHARLES
  * Database connexion class. It's a singleton to make an unique connexion
-     * Globals variables -> file : config/config.php
-     * $host        = L'hôte (ordinateur sur lequel Mysql est installé)
-     * $base        = Le nom de la base de données
-     * $login       = Le nom d'utilisateur
-     * $mdp         = Le mot de passe
-*/
-
+     * Globals variables -> file : Config/config.php
+     * $host        = database host
+     * $base        = database name
+     * $login       = database username
+     * $mdp         = database password
+ */
 class DBConnexion {
 
-    // Variables utiles
+    /**
+     * useful variables
+     * @var null|PDO
+     */
     private static
         $dbh=null,
         $instance = null,
         $statement;
 
-    // Constructeur : methode pour instancier une nouvelle connexion à la base de donnée.
+
+    /**
+     * DBConnexion constructor.
+     * Method for instantiate a new database connexion
+     */
     private function __construct() {
         global $login, $mdp, $base, $host;
         self::$dbh = new PDO('mysql:host='.$host.';dbname='.$base.'',$login,$mdp);
     }
 
-    // Methode pour le singleton qui permet de récuperer ou d'instancier de Connexion à la base de données
+
+    /**
+     * Method for singleton who get or instantiate a database connexion
+     * @return DBConnexion|null|PDO
+     */
     public static function getInstance() {
         if (self::$instance == null) {
             self::$instance = new self;
@@ -36,7 +48,12 @@ class DBConnexion {
         return self::$instance;
     }
 
-    // Méthode de préparation et d'éxéution d'une requete. -> Remplace les ? de la requete.
+
+    /**
+     * Method for prepare and execute request (Replace ? by parameters if exist)
+     * @param $requete
+     * @param $param
+     */
     public function prepareAndExecuterQuerySelect($requete, $param){
         self::$statement = self::$dbh->prepare($requete);
         if (isset($param) && $param!=null) {
@@ -47,12 +64,19 @@ class DBConnexion {
         self::$statement->execute();
     }
 
-    // Methode de récuperation des resultats.
+
+    /**
+     * Method for get results
+     * @return mixed
+     */
     public static function getResult(){
         return self::$statement->fetchAll();
     }
 
-    // Methode de destruction du statement.
+
+    /**
+     * Method for destruct results
+     */
     public static function destroyQueryResults(){
         self::$statement->closeCursor();
         self::$statement=NULL;
