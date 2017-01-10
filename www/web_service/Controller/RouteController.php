@@ -3,6 +3,7 @@
 namespace Controller;
 
 use Model\DrugModal;
+use Model\Entities\Drug;
 use Exception;
 
 /**
@@ -33,9 +34,6 @@ class RouteController {
                     break;
                 case 'getDrugWithId':
                     $this->getDrugWithId();
-                    break;
-                case 'getDrugWithCode':
-                    $this->getDrugWithCode();
                     break;
                 case 'getDrugId':
                     $this->getDrugId();
@@ -92,34 +90,30 @@ class RouteController {
 
 
     /**
-     * Method to return drug to JSON with code
-     */
-    function getDrugWithCode() {
-        if (!isset($_REQUEST['code'])) {
-            die("Server error, no code drug is defined");
-        } else {
-            $code = $_REQUEST['code'];
-        }
-        $dal = new DrugModal();
-        echo $dal->getDrugWithCode($code);
-    }
-
-
-    /**
      * Method to add drug
      */
     function addDrug() {
-        /* TODO : Not implemented yet */
-        /*
-        if (!isset($_REQUEST['data'])) {
+        if(!isset($_REQUEST['data'])) {
             die("Server error, no data drug is defined");
         } else {
             $data = $_REQUEST['data'];
         }
-        //$drug = new Drug(, , , , , )
+
+        $dataConvert = json_decode($data);
+
+        var_dump($dataConvert);
+
         $dal = new DrugModal();
-        echo $dal->addDrug($drug);
-        */
+
+        $id=$dal->getFreeDrugId();
+
+        $drug = new Drug($id,$dataConvert['title'],$dataConvert['sub_name'], $dataConvert['flash_code'] ,$dataConvert['bar_code']);
+
+        $dal->addDrug($drug);
+
+        echo $drug->getId();
+
+
     }
 
     /**

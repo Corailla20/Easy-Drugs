@@ -60,7 +60,7 @@ class DBConnexion {
             for ($i = 1; $i <= count($param); $i++) {
                 self::$statement->bindParam($i, $param[$i][0], $param[$i][1]);
             }
-        }
+        }   
         self::$statement->execute();
     }
 
