@@ -32,6 +32,16 @@ angular.module('factories', [])
             });
         };
 
-        return {getDrugId: getDrugId, getDrugWithId : getDrugWithId, getData : getData};
+        var addDrug = function(drug) {
+
+            // Angular $http() and then() both return promises themselves
+            return $http({method:"POST", url:SERVICE_URL+'?action=addDrug',data: drug}).then(function(result){
+
+                // What we return here is the data that will be accessible to us after the promise resolves
+                return result.data;
+            });
+        };
+
+        return {getDrugId: getDrugId, getDrugWithId : getDrugWithId, getData : getData, addDrug : addDrug};
 
     });
