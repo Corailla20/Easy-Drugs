@@ -26,10 +26,12 @@ angular.module('App')
             $ionicLoading.hide();
         };
 
+        $scope.drug2 = {'title':'','subname':''};
+
         var showPopup = function(code) {
             // An elaborate, custom popup
             var myPopup = $ionicPopup.show({
-                template: '<input type="textarea" placeholder="Nom du médicament" ng-model="drug2">',
+                template: '<input type="textarea" placeholder="Drug\'s name" ng-model="drug2.title"><input type="textarea" placeholder="Drug\'s subname" ng-model="drug2.subname">',
                 title: 'Add drug',
                 subTitle: 'Do you want to add this drug in the database ?',
                 scope: $scope,
@@ -41,13 +43,24 @@ angular.module('App')
                         onTap: function(e) {
                             //$scope.modal.show();
                             if(code.indexOf('01') !== -1) { 
-                                var drugToAdd = {title:$scope.drug2, flash_code:code};
+                                var drugToAdd = {title:$scope.drug2.title, subname:$scope.drug2.subname, bar_code:'', flash_code:code};
                             }
                             else {
-                                var drugToAdd = {title:$scope.drug2, bar_code:code};
+                                var drugToAdd = {title:$scope.drug2.title, subname:$scope.drug2.subname, bar_code:code, flash_code: ''};
                             }
                             // Add drug in DB
                             alert(JSON.stringify(drugToAdd));
+
+                            self.showLoading('');
+                            var myDrugDataPromise = Drugs.addDrug(drugToAdd);
+                            myDrugDataPromise.then(function(result) {
+                                var resId = result;
+                                alert(resId);
+                                // Go on drug page
+                                $state.go('app.drug', { 'drugId': resId });
+                            });
+                            self.hideLoading();
+
                         }
                     }
                 ]
@@ -57,7 +70,6 @@ angular.module('App')
                 console.log('Tapped!', res);
             });
         };
-
 
         showPopup('0145467512754');
 
