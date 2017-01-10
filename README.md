@@ -10,15 +10,15 @@ Easy-Drugs is a simple Cordova application using Ionic.
 
 #### Minimal installation
 
-    You need to a web service to run. You should copy unless www/web_service into public_html folder server.
-    Import database present into Config folder (database.sql) into your database.
-    CHANGE SERVICE_URL CONSTANT INTO app.js FILE with the correct URL of your server !
-    CHANGE CONFIGURATION into config file into web_service folder !
+You need to a web service to run. You should copy unless www/web_service into public_html folder server.
+Import database present into Config folder (database.sql) into your database.
+CHANGE SERVICE_URL CONSTANT INTO app.js FILE with the correct URL of your server !
+CHANGE CONFIGURATION into config file into web_service folder !
 
 #### Full installation (Website app)
 
-    Copy all the content of www folder into public_html server folder.
-    Import database present into Config folder (database.sql) into your database.
+Copy all the content of www folder into public_html server folder.
+Import database present into Config folder (database.sql) into your database.
 
 ## Development configuration
 
@@ -85,6 +85,6 @@ Go into Easy-Drugs project :
 - **phonegap-plugin-barcodescanner** : The BarcodeScanner plugin supports extracting data from a large range of barcodes, including QR codes. On Android you can also encode any piece of text (URL, phone number, etc) into a QR code.
 
 ## Team members
-    - Coralie **RODRIGUES**
-    - Jéremy **MEZHOUD**
-    - Pierre **CHARLES**
+- Coralie **RODRIGUES**
+- Jéremy **MEZHOUD**
+- Pierre **CHARLES**
