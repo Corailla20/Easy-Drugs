@@ -7,7 +7,7 @@
 
 angular.module('App')
 
-    .controller('BarcodeController', function($scope, $cordovaBarcodeScanner, $state, $ionicHistory, DrugsService, Drug, $ionicLoading, $ionicModal, $ionicPopup) {
+    .controller('BarcodeController', function($scope, $cordovaBarcodeScanner, $state, $ionicHistory, DrugsService, Drugs, $ionicLoading, $ionicModal, $ionicPopup) {
 
         var self = this;
 
@@ -26,10 +26,10 @@ angular.module('App')
             $ionicLoading.hide();
         };
 
-        $scope.showPopup = function() {
+        var showPopup = function(code) {
             // An elaborate, custom popup
             var myPopup = $ionicPopup.show({
-                template: '<input type="textarea" placeholder="Nom du médicament" ng-model="drug2.name">',
+                template: '<input type="textarea" placeholder="Nom du médicament" ng-model="drug2">',
                 title: 'Add drug',
                 subTitle: 'Do you want to add this drug in the database ?',
                 scope: $scope,
@@ -40,11 +40,11 @@ angular.module('App')
                         type: 'button-positive',
                         onTap: function(e) {
                             //$scope.modal.show();
-                            if($scope.drugCode.indexOf('01') !== -1) { 
-                                var drugToAdd = {/*title:$scope.drug2.name, */flash_code:$scope.drugCode};
+                            if(code.indexOf('01') !== -1) { 
+                                var drugToAdd = {title:$scope.drug2, flash_code:code};
                             }
                             else {
-                                var drugToAdd = {/*title:$scope.drug2.name, */bar_code:$scope.drugCode};
+                                var drugToAdd = {title:$scope.drug2, bar_code:code};
                             }
                             // Add drug in DB
                             alert(JSON.stringify(drugToAdd));
@@ -56,11 +56,10 @@ angular.module('App')
             myPopup.then(function(res) {
                 console.log('Tapped!', res);
             });
-
-            $timeout(function() {
-                myPopup.close(); // Close the popup after 3 seconds for some reason
-            }, 3000);
         };
+
+
+        showPopup('0145467512754');
 
         $scope.scanBarcode = function() {
 
@@ -79,7 +78,7 @@ angular.module('App')
                     }
                     self.showLoading('');
 
-                    var myDrugDataPromise = Drug.getDrugId($scope.drugCode);
+                    var myDrugDataPromise = Drugs.getDrugId($scope.drugCode);
                     myDrugDataPromise.then(function(result) {
 
                         var res = result;
@@ -100,7 +99,7 @@ angular.module('App')
 
                         else {  
                             alert("Unknow drug !");                      
-                            $scope.showPopup();
+                            showPopup($scope.drugCode);
 
                         }
                     });
