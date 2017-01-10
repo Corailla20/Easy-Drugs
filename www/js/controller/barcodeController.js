@@ -16,10 +16,9 @@ angular.module('App')
         }).then(function(modal) {
           $scope.modal = modal;
         });
-
-        this.showLoading = function() {
+        this.showLoading = function(message) {
             $ionicLoading.show({
-                template: '<ion-spinner></ion-spinner>'
+                template: '<ion-spinner>'+message+'</ion-spinner>'
             });
         };
 

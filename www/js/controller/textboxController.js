@@ -22,6 +22,19 @@ angular.module('App')
             saveToPhotoAlbum: false
         };
 
+        //Funtion getting an image, then calling tesseract to extract text from it
+        function callTesseract(URI) { 
+            self.showLoading('');
+            Tesseract.recognize(URI)
+                .progress(function (progress) {
+                    self.showLoading(progress.status);
+                })
+                .then(function (result) {
+                    self.hideLoading();
+                    alert(result.text);
+                });
+        }
+
 
         this.showLoading = function(message) {
             $ionicLoading.show({
@@ -42,16 +55,8 @@ angular.module('App')
 
                     var imgURI = "data:image/jpeg;base64," + imageData;
 
-                    self.showLoading('');
-                    Tesseract.recognize(imgURI)
-                        .progress(function (progress) {
-                            self.showLoading(progress.status);
-                        })
-                        .then(function (result) {
-                            self.hideLoading();
-                            alert(result.text);
-                        });
-                        
+                    callTesseract(imgURI);
+
                 }, function (err) {
 
                     if(err = "Camera cancelled."){
@@ -64,7 +69,7 @@ angular.module('App')
 
                 // TESSERACT
                 self.showLoading('');
-                Tesseract.recognize('http://www.cekane.fr/wp-content/uploads/2015/10/googlelogosept12015.png')
+                Tesseract.recognize('http://ngcordova.com/img/ngcordova-logo.png')
                     .progress(function (progress) {
                         self.showLoading(progress.status);
                     })
@@ -84,7 +89,10 @@ angular.module('App')
                 options.sourceType = Camera.PictureSourceType.PHOTOLIBRARY;
 
                 $cordovaCamera.getPicture(options).then(function (imageData) {
-                    $scope.imgURI = "data:image/jpeg;base64," + imageData;
+
+                    var imgURI = "data:image/jpeg;base64," + imageData;
+
+                    callTesseract(imgURI);
 
                 }, function (err) {
 

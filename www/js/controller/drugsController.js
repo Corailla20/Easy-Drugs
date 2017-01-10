@@ -1,6 +1,6 @@
 /*
-    File : homeController.js
-    The HomeController interact with the home view
+ File : homeController.js
+ The HomeController interact with the home view
  */
 
 'Use Strict';
