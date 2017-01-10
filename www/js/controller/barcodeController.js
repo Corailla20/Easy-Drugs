@@ -90,7 +90,6 @@ angular.module('App')
                         alert(JSON.stringify(result));
                         alert($scope.drug.id);
                         //var find = false;
-                        alert(result.length);
                         if(result.length > 0) {
                             $state.go('app.drug', { 'drugId': $scope.drug.id });
                             if(imageData.text != $scope.drug.bar_code) {  // --> This is a flash code           
