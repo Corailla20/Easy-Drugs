@@ -85,6 +85,6 @@ Go into Easy-Drugs project :
 - **phonegap-plugin-barcodescanner** : The BarcodeScanner plugin supports extracting data from a large range of barcodes, including QR codes. On Android you can also encode any piece of text (URL, phone number, etc) into a QR code.
 
 ## Team members
-    - Coralie **RODRIGUES**
-    - Jéremy **MEZHOUD**
-    - Pierre **CHARLES**
+- Coralie **RODRIGUES**
+- Jéremy **MEZHOUD**
+- Pierre **CHARLES**

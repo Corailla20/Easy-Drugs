@@ -2,9 +2,8 @@
 
 namespace Controller;
 
-use Model\DBConnexion;
+use Model\DrugModal;
 use Model\Entities\Drug;
-use Model\Entities\Drugs;
 
 class RouteController {
 
@@ -28,14 +27,14 @@ class RouteController {
                 case 'getDrugs':
                     $this->getDrugs();
                     break;
-                case 'getDrugWithId':
-                    $this->getDrugWithId();
-                    break;
-                case 'getDrugWithName':
-                    $this->getDrugWithName();
+                case 'getDrug':
+                    $this->getDrug();
                     break;
                 case 'addDrug':
                     $this->addDrug();
+                    break;
+                case 'login':
+                    $this->login();
                     break;
                 default:
                     break;
@@ -46,44 +45,50 @@ class RouteController {
         }
     }
 
-
     /*
      * Method to return complete drug list to JSON
      */
     function getDrugs()
     {
-        $request = "SELECT * FROM DRUG";
-        DBConnexion::getInstance()->prepareAndExecuterQuerySelect($request, null);
-        $response = DBConnexion::getInstance()->getResult();
-        $drugs = new Drugs();
-        foreach ($response as $resp)
-        {
-            $drug = new Drug(
-                $resp['id'],
-                $resp['title'],
-                $resp['sub_name'],
-                $resp['bar_code'],
-                $resp['flash_code'],
-                $resp['notice']
-            );
-            $drugs->addDrug($drug->toJson());
+        $dal = new DrugModal();
+        echo $dal->getDrugs();
+    }
+
+    /*
+     * Method to return drug  to JSON with Id
+    */
+    function getDrug() {
+        if (!isset($_REQUEST['code'])) {
+            die("Server error, no id drug is defined");
+        } else {
+            $code = $_REQUEST['code'];
         }
-
-        DBConnexion::getInstance()->destroyQueryResults();
-
-        echo $drugs->getDrugsToJson();
+        $dal = new DrugModal();
+        echo $dal->getDrug($code);
     }
 
-    function getDrugWithId() {
-
-    }
-
-    function getDrugWithName() {
-
-    }
-
+    /*
+    * Method to add drug
+    */
     function addDrug() {
+        /*
+        if (!isset($_REQUEST['data'])) {
+            die("Server error, no data drug is defined");
+        } else {
+            $data = $_REQUEST['data'];
+        }
+        //$drug = new Drug(, , , , , )
+        $dal = new DrugModal();
+        echo $dal->addDrug($drug);
+        */
+    }
+
+    /*
+    * Method to login
+    */
+    function login() {
 
     }
+
 
 }
