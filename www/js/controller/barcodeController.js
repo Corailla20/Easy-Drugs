@@ -77,73 +77,34 @@ angular.module('App')
                     else {
                         $scope.drugCode = imageData.text;
                     }
-                    //self.showLoading();
+                    self.showLoading('');
 
-                    alert($scope.drugCode);
-
-                    var myDrugDataPromise = Drug.getData($scope.drugCode);
+                    var myDrugDataPromise = Drug.getDrugId($scope.drugCode);
                     myDrugDataPromise.then(function(result) {
 
-                        $scope.drug = result[0];
-                        alert(JSON.stringify(result[0]));
-                        alert(JSON.stringify(result));
-                        alert($scope.drug.id);
-                        //var find = false;
-                        if(result.length > 0) {
-                            $state.go('app.drug', { 'drugId': $scope.drug.id });
-                            if(imageData.text != $scope.drug.bar_code) {  // --> This is a flash code           
+                        var res = result;
+                        if(res != -1) {
+                            if(imageData.text.indexOf('01') !== -1) {  // --> This is a flash code           
                                 // Get expiration date from flash code
                                 var expDateTmp = imageData.text.substring(19,25);
                                 DrugsService.expDate = "Expiration date : " + expDateTmp.substring(2,4) + "/" + expDateTmp.substring(0,2);
-                                //alert(Drugs.expDate);
                             }
                             else {
                                 DrugsService.expDate = '';
                             }
+                            $state.go('app.drug', { 'drugId': res });
                             $ionicHistory.nextViewOptions({
                                 disableBack: false
                             });
                         }
 
-                        /*angular.forEach($scope.drugs, function(value, key){
-                            if(imageData.text == value.bar_code || (value.flash_code != '' && imageData.text.indexOf(value.flash_code) !== -1)) {
-                                find = true;                                
-
-                                $scope.drug = value;
-
-                                $state.go('app.drug', { 'drugId': value.id });
-                                if(imageData.text != value.bar_code) {  // --> This is a flash code           
-                                    // Get expiration date from flash code
-                                    var expDateTmp = imageData.text.substring(19,25);
-                                    DrugsService.expDate = "Expiration date : " +  expDateTmp.substring(2,4) + "/" + expDateTmp.substring(0,2);
-                                    //alert(Drugs.expDate);
-                                }
-                                else {
-                                    DrugsService.expDate = '';
-                                    $scope.drugCode = imageData.text;
-                                }
-                                $ionicHistory.nextViewOptions({
-                                    disableBack: false
-                                });
-                            }
-                        });*/
-
                         else {  
-                            alert("Unknow drug !");
-
-                            /*if(imageData.text.indexOf('01') !== -1) {                     
-                                // Decompose flash code for getting CIP
-                                $scope.drugCode = imageData.text.substring(1,19);
-                            }
-                            else {
-                                $scope.drugCode = imageData.text;
-                            }*/
-                            alert($scope.drugCode);                         
+                            alert("Unknow drug !");                      
                             $scope.showPopup();
 
                         }
                     });
-                    //self.hideLoading();
+                    self.hideLoading();
 
                 }, function(error) {
                     console.log("An error happened -> " + error);

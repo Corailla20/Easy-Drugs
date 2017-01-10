@@ -6,17 +6,15 @@
 'Use Strict';
 
 angular.module('App')
-    .controller('DrugController', function($scope, $stateParams, Drugs, $ionicLoading, DrugsService) {
+    .controller('DrugController', function($scope, $stateParams, $ionicLoading, DrugsService,Drug) {
 
 		$scope.drugs = DrugsService.drugs;
 		$scope.expDate = DrugsService.expDate;
-
 		$scope.getDrug = function() {
-			angular.forEach($scope.drugs, function(value, key){
-				if($stateParams.drugId == value.id) {
-					$scope.drug = value;
-				}
-			});
+			var myDrugDataPromise = Drug.getDrugWithId($stateParams.drugId);
+            myDrugDataPromise.then(function(result) {
+                $scope.drug = result[0];
+            });
 		};
 		$scope.getDrug();
     });

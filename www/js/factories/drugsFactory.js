@@ -2,7 +2,7 @@ angular.module('factories', [])
 
     .factory('Drugs', function(SERVICE_URL, $http) {
 
-        var getDatas = function() {
+        var getData = function() {
 
             // Angular $http() and then() both return promises themselves
             return $http({method:"GET", url:SERVICE_URL+'?action=getDrugs'}).then(function(result){

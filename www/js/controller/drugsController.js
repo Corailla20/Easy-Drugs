@@ -7,7 +7,7 @@
 
 angular.module('App')
 
-    .controller('DrugsController', function($scope, $state, Drugs, DrugsService, $ionicLoading) {
+    .controller('DrugsController', function($scope, Drugs, DrugsService, $ionicLoading) {
 
         var self = this;
 
@@ -27,6 +27,7 @@ angular.module('App')
         myDrugsDataPromise.then(function(result) {
             // this is only run after getData() resolves
             DrugsService.drugs = result;
+            console.log(result);
 
             $scope.drugs = DrugsService.drugs;
             $scope.drugsDB = DrugsService.drugs;
