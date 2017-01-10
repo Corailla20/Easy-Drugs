@@ -9,8 +9,9 @@ angular.module('App')
 
     .controller('StartController', function($scope, $state, $ionicHistory) {
 
-        //Drugs.expDate = '';
-
+        /**
+         * Controller barcode button
+         */
         $scope.clickBarcodeScanButton = function() {
 
             $ionicHistory.nextViewOptions({
@@ -20,6 +21,9 @@ angular.module('App')
 
         };
 
+        /**
+         * Controller text box scan button
+         */
         $scope.clickTextboxScanButton = function() {
 
             $ionicHistory.nextViewOptions({

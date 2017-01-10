@@ -17,7 +17,7 @@ class RouteController {
      * RouteController constructor.
      * Check action request and redirect into correct queries
      */
-    function __construct() {
+    public function __construct() {
 
         session_start(); // Session start
 
@@ -56,7 +56,7 @@ class RouteController {
     /**
      * Method to return complete drug list to JSON
      */
-    function getDrugs()
+    public function getDrugs()
     {
         $dal = new DrugModal();
         echo $dal->getDrugs();
@@ -65,12 +65,9 @@ class RouteController {
     /**
      * Method to return drug to JSON with Id
      */
-    function getDrugId() {
-        if (!isset($_REQUEST['code'])) {
-            die("Server error, no id drug is defined");
-        } else {
-            $code = $_REQUEST['code'];
-        }
+    public function getDrugId()
+    {
+        $code = $this->verifyDataRequest('code');
         $dal = new DrugModal();
         echo $dal->getDrugId($code);
     }
@@ -78,50 +75,51 @@ class RouteController {
     /**
      * Method to return drug to JSON with Id
      */
-    function getDrugWithId() {
-        if (!isset($_REQUEST['id'])) {
-            die("Server error, no id drug is defined");
-        } else {
-            $id = $_REQUEST['id'];
-        }
+    public function getDrugWithId()
+    {
+        $id = $this->verifyDataRequest('id');
         $dal = new DrugModal();
         echo $dal->getDrugWithId($id);
     }
 
-
     /**
      * Method to add drug
      */
-    function addDrug() {
-        if(!isset($_REQUEST['data'])) {
-            die("Server error, no data drug is defined");
-        } else {
-            $data = $_REQUEST['data'];
-        }
-
-        $dataConvert = json_decode($data);
-
-        var_dump($dataConvert);
+    public function addDrug()
+    {
+        $data = array();
+        $data['title'] = $this->verifyDataRequest('title');
+        $data['subname'] = $this->verifyDataRequest('subname');
+        $data['bar_code'] = $this->verifyDataRequest('bar_code');
+        $data['flash_code'] = $this->verifyDataRequest('flash_code');
 
         $dal = new DrugModal();
 
         $id=$dal->getFreeDrugId();
 
-        $drug = new Drug($id,$dataConvert['title'],$dataConvert['sub_name'], $dataConvert['flash_code'] ,$dataConvert['bar_code']);
+        $drug = new Drug($id,$data['title'],$data['subname'],$data['bar_code'],$data['flash_code']);
 
         $dal->addDrug($drug);
-
         echo $drug->getId();
-
 
     }
 
     /**
      * Method to login
      */
-    function login() {
+    public function login()
+    {
         /* TODO : Not implemented yet */
     }
 
+    public function verifyDataRequest($data)
+    {
+        if(!isset($_REQUEST[$data])) {
+            die("Server error, no data drug is defined");
+        } else {
+            $result = $_REQUEST[$data];
+        }
+        return $result;
+    }
 
 }

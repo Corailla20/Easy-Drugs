@@ -57,7 +57,7 @@ class Drug {
      * @return mixed
      */
     public function getTitle() {
-        return $this->id;
+        return $this->title;
     }
 
     /**

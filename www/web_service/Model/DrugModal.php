@@ -107,9 +107,7 @@ class DrugModal
 
         DBConnexion::getInstance()->prepareAndExecuterQuerySelect($request, $param);
         $response = DBConnexion::getInstance()->getResult();
-
-        var_dump($response);
-
+        
         return json_encode($response);
     }
 

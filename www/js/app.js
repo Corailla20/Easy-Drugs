@@ -13,13 +13,16 @@ angular.module('App', ['ionic', 'app.routes', 'ngCordova', 'factories', 'service
 
           $ionicPlatform.ready(function() {
 
-              if (window.cordova && window.cordova.plugins.Keyboard) {
+              if (window.cordova && window.cordova.plugins.Keyboard)
+              {
                   cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
                   cordova.plugins.Keyboard.disableScroll(true);
-
               }
-              if (window.StatusBar) {
+
+              if (window.StatusBar)
+              {
                   StatusBar.styleDefault();
               }
+
           });
     })

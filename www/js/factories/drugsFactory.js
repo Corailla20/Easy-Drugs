@@ -1,47 +1,73 @@
+/*
+ File : drugsFactory.js
+ Here defined all function to send drugs request at the web service
+ */
+
 angular.module('factories', [])
 
     .factory('Drugs', function(SERVICE_URL, $http) {
 
-        var getDrugId = function(code) {
 
-            // Angular $http() and then() both return promises themselves
-            return $http({method:"GET", url:SERVICE_URL+'?action=getDrugId&code=' + code}).then(function(result){
-
-                // What we return here is the data that will be accessible to us after the promise resolves
+        /**
+         * Angular $http() and then() both return promises themselves
+         * What we return here is the data that will be accessible to us after the promise resolves
+         */
+        var getDrugId = function(code)
+        {
+            return $http({method:"GET", url:SERVICE_URL+'?action=getDrugId&code=' + code}).then(function(result)
+            {
                 return result.data;
             });
         };
 
-        var getDrugWithId = function(drugId) {
-
-            // Angular $http() and then() both return promises themselves
-            return $http({method:"GET", url:SERVICE_URL+'?action=getDrugWithId&id=' + drugId}).then(function(result){
-
-                // What we return here is the data that will be accessible to us after the promise resolves
+        /**
+         * Angular $http() and then() both return promises themselves
+         * What we return here is the data that will be accessible to us after the promise resolves
+         */
+        var getDrugWithId = function(drugId)
+        {
+            return $http({method:"GET", url:SERVICE_URL+'?action=getDrugWithId&id=' + drugId}).then(function(result)
+            {
                 return result.data;
             });
         };
 
-        var getData = function() {
-
-            // Angular $http() and then() both return promises themselves
-            return $http({method:"GET", url:SERVICE_URL+'?action=getDrugs'}).then(function(result){
-
-                // What we return here is the data that will be accessible to us after the promise resolves
+        /**
+         * Angular $http() and then() both return promises themselves
+         * What we return here is the data that will be accessible to us after the promise resolves
+         */
+        var getData = function()
+        {
+            return $http({method:"GET", url:SERVICE_URL+'?action=getDrugs'}).then(function(result)
+            {
                 return result.data;
             });
         };
 
-        var addDrug = function(drug) {
+        /**
+         * Angular $http() and then() both return promises themselves
+         * What we return here is the data that will be accessible to us after the promise resolves
+         */
+        var addDrug = function(drug)
+        {
+            var urlRequest =
+                SERVICE_URL+'?action=addDrug'
+                +'&title='+drug['title']
+                +'&subname='+drug['subname']
+                +'&flash_code='+drug['flash_code']
+                +'&bar_code='+drug['bar_code'];
 
-            // Angular $http() and then() both return promises themselves
-            return $http({method:"POST", url:SERVICE_URL+'?action=addDrug',data: drug}).then(function(result){
-
-                // What we return here is the data that will be accessible to us after the promise resolves
+            return $http({method:"GET", url:urlRequest}).then(function(result)
+            {
                 return result.data;
             });
         };
 
-        return {getDrugId: getDrugId, getDrugWithId : getDrugWithId, getData : getData, addDrug : addDrug};
+        return {
+            getDrugId: getDrugId,
+            getDrugWithId : getDrugWithId,
+            getData : getData,
+            addDrug : addDrug
+        };
 
     });

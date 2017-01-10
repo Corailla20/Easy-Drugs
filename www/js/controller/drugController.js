@@ -1,29 +1,43 @@
 /*
  File : drugController.js
- The DrugController interact with the current drug to display
+ The DrugController interact with the current drug to display or scanned drug
  */
 
 'Use Strict';
 
 angular.module('App')
+
     .controller('DrugController', function($scope, $stateParams, $ionicLoading, DrugsService, Drugs) {
 
-    	var self = this;
+        var self = this;
 
-		this.showLoading = function(message) {
+        /**
+         * Function to display a spinner for loading with a message
+         * @param message
+         */
+        this.showLoading = function(message)
+        {
             $ionicLoading.show({
-                template: '<ion-spinner>'+message+'</ion-spinner>'
+                template: '<ion-spinner></ion-spinner><p>'+message+'</p>'
             });
         };
 
-        this.hideLoading = function(){
+        /**
+         * Function to hide spinner loading
+         */
+        this.hideLoading = function()
+        {
             $ionicLoading.hide();
         };
 
 		$scope.drugs = DrugsService.drugs;
 		$scope.expDate = DrugsService.expDate;
-		$scope.getDrug = function() {
 
+        /**
+         * $scope function to get drug object to display
+         */
+		$scope.getDrug = function()
+        {
             self.showLoading('');
 
 			var myDrugDataPromise = Drugs.getDrugWithId($stateParams.drugId);
@@ -32,7 +46,7 @@ angular.module('App')
             });
 
             self.hideLoading();
-
 		};
+
 		$scope.getDrug();
     });

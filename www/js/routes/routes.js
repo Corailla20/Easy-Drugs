@@ -6,8 +6,8 @@
 
 angular.module('app.routes', [])
 
-    .config(function($stateProvider, $urlRouterProvider) {
-
+    .config(function($stateProvider, $urlRouterProvider)
+    {
         $stateProvider
 
             .state('app', {
@@ -65,6 +65,7 @@ angular.module('app.routes', [])
                     }
                 }
             });
+
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/start');
     });
