@@ -40,7 +40,7 @@ angular.module('App')
         $scope.search = function() {
             $scope.drugs = [];
             $scope.drugsDB = DrugsService.drugs;
-
+ 
             angular.forEach($scope.drugsDB, function(value, key){
 
                 if(value.title.indexOf($scope.searchData) == 0){
