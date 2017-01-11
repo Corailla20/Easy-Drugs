@@ -36,6 +36,18 @@ angular.module('factories', [])
          * Angular $http() and then() both return promises themselves
          * What we return here is the data that will be accessible to us after the promise resolves
          */
+        var getDrugsWithTesseract = function(tesseract_result)
+        {
+            return $http({method:"GET", url:SERVICE_URL+'?action=getDrugWithTesseract&id=' + tesseract_result}).then(function(result)
+            {
+                return result.data;
+            });
+        };
+
+        /**
+         * Angular $http() and then() both return promises themselves
+         * What we return here is the data that will be accessible to us after the promise resolves
+         */
         var getData = function()
         {
             return $http({method:"GET", url:SERVICE_URL+'?action=getDrugs'}).then(function(result)
@@ -67,7 +79,8 @@ angular.module('factories', [])
             getDrugId: getDrugId,
             getDrugWithId : getDrugWithId,
             getData : getData,
-            addDrug : addDrug
+            addDrug : addDrug,
+            getDrugsWithTesseract : getDrugsWithTesseract
         };
 
     });

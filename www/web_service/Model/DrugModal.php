@@ -126,4 +126,53 @@ class DrugModal
     }
 
 
+    /**
+     * Method for get drugs list with a tesseract recognition result
+     * @param $tesseract_result
+     * @return string
+     */
+    function getDrugsWithTesseract($tesseract_result){
+
+        $treatment = $this->tessreactResultTreatment($tesseract_result);
+
+        $request = "SELECT * FROM DRUG WHERE title LIKE ?";
+
+        $param = array(
+            '1' => array( $treatment, PDO::PARAM_STR),
+        );
+
+        DBConnexion::getInstance()->prepareAndExecuterQuerySelect($request, $param);
+        $response = DBConnexion::getInstance()->getResult();
+        $drugs = new Drugs();
+
+        foreach ($response as $resp) {
+            $drug = new Drug(
+                $resp['id'],
+                $resp['title'],
+                $resp['sub_name'],
+                $resp['bar_code'],
+                $resp['flash_code'],
+                $resp['notice']
+            );
+            $drugs->addDrug($drug->toJson());
+        }
+
+        DBConnexion::getInstance()->destroyQueryResults();
+        return $drugs->getDrugsToJson();
+    }
+
+
+    /**
+     * Search treatment result for tesseract
+     * @param $tesseract_result
+     * @return mixed
+     */
+    public function tessreactResultTreatment($tesseract_result){
+
+        $treatment = preg_replace('/[^[:alnum:]]/','', $tesseract_result);
+
+        return $treatment;
+    }
+
+
 }

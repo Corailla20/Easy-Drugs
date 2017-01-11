@@ -91,18 +91,6 @@ angular.module('App')
 
             } else {
 
-                /*
-                self.showLoading('');
-                Tesseract.recognize('')
-                    .progress(function (progress) {
-                        self.showLoading(progress.status);
-                    })
-                    .then(function (result) {
-                        self.hideLoading();
-                        alert(result.text);
-                        console.log(result.text);
-                    });
-                 */
             }
 
         };

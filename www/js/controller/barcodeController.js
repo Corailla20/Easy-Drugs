@@ -57,9 +57,10 @@ angular.module('App')
                     {
                         text: '<b>Yes</b>',
                         type: 'button-positive',
-                        onTap: function(event) {
-
-                            var drugToAdd = {
+                        onTap: function(event)
+                        {
+                            var drugToAdd =
+                            {
                                 title : $scope.drug2.title,
                                 subname:$scope.drug2.subname,
                                 bar_code:'',
@@ -72,7 +73,6 @@ angular.module('App')
                             myDrugDataPromise.then(function(result) {
                                 $state.go('app.drug', { 'drugId': result});
                             });
-
                         }
                     }
                 ]
@@ -80,12 +80,16 @@ angular.module('App')
 
             myPopup.then(function(res)
             {
-                console.log('Tapped!', res);
+                $scope.drug2.title = '';
+                $scope.drug2.subname = '';
             });
         };
 
         //showPopup('0145467512754');
 
+        /**
+         * Method to scan a barcode
+         */
         $scope.scanBarcode = function()
         {
             $scope.drugCode = '';
@@ -104,16 +108,18 @@ angular.module('App')
                     self.showLoading('');
 
                     var myDrugDataPromise = Drugs.getDrugId($scope.drugCode);
-                    myDrugDataPromise.then(function(result) {
-
+                    myDrugDataPromise.then(function(result)
+                    {
                         var res = result;
-                        if(res != -1) {
-                            if(imageData.text.indexOf('01') !== -1) {  // --> This is a flash code           
-                                // Get expiration date from flash code
+                        if(res != -1)
+                        {
+                            if(imageData.text.indexOf('01') !== -1)
+                            {
                                 var expDateTmp = imageData.text.substring(19,25);
                                 DrugsService.expDate = "Expiration date : " + expDateTmp.substring(2,4) + "/" + expDateTmp.substring(0,2);
                             }
-                            else {
+                            else
+                            {
                                 DrugsService.expDate = '';
                             }
                             $state.go('app.drug', { 'drugId': res });

@@ -11,6 +11,9 @@ angular.module('App')
 
         var self = this;
 
+        $scope.drugs = DrugsService.drugs;
+        $scope.expDate = DrugsService.expDate;
+
         /**
          * Function to display a spinner for loading with a message
          * @param message
@@ -30,9 +33,6 @@ angular.module('App')
             $ionicLoading.hide();
         };
 
-		$scope.drugs = DrugsService.drugs;
-		$scope.expDate = DrugsService.expDate;
-
         /**
          * $scope function to get drug object to display
          */
@@ -48,5 +48,8 @@ angular.module('App')
             self.hideLoading();
 		};
 
-		$scope.getDrug();
+        $scope.getDrug();
+        DrugsService.expDate='';
+
+
     });

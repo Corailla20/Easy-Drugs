@@ -41,8 +41,8 @@ class RouteController {
                 case 'addDrug':
                     $this->addDrug();
                     break;
-                case 'login':
-                    $this->login();
+                case 'getDrugsWithTesseract':
+                    $this->getDrugsWithTesseract();
                     break;
                 default:
                     break;
@@ -105,13 +105,21 @@ class RouteController {
     }
 
     /**
-     * Method to login
+     * Method to get Drugs With Tesseract
      */
-    public function login()
+    public function getDrugsWithTesseract()
     {
-        /* TODO : Not implemented yet */
+
+        $tesseract_result = $this->verifyDataRequest('tesseract_result');
+        $dal = new DrugModal();
+        echo $dal->getDrugsWithTesseract($tesseract_result);
     }
 
+    /**
+     * Method for verify data request
+     * @param $data
+     * @return mixed
+     */
     public function verifyDataRequest($data)
     {
         if(!isset($_REQUEST[$data])) {
